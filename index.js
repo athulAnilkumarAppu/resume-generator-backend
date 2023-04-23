@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 app.post('/create-pdf', (req, res)=> {
     pdf.create(pdfTemplate(req.body), {}).toFile('resume.pdf', (err)=> {
         if(err){
-             res.send({status: false, errorMessage: err})
+             res.send({status: false, errorMessage: err, extras: req.body})
         }else{
             res.send(true)
         }
