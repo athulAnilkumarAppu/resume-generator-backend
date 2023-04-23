@@ -1,4 +1,4 @@
-module.exports = ({ name, email, phone, profileDescription, talent1, talent1Description, talent2, talent2Description, talent3, talent3Description, skill1, skill2, skill3,skill4,skill5,skill6, company1, position1, startDate1, endDate1, shortDescription1, company2, position2, startDate2, endDate2, shortDescription2, collegeName, degree, gpa}) => {
+module.exports = ({profileImage, name, email, phone, profileDescription, talent1, talent1Description, talent2, talent2Description, talent3, talent3Description, skill1, skill2, skill3,skill4,skill5,skill6, company1, position1, startDate1, endDate1, shortDescription1, company2, position2, startDate2, endDate2, shortDescription2, collegeName, degree, gpa}) => {
    const today = new Date();
 return `
     <!doctype html>
@@ -86,7 +86,7 @@ return `
                    <td colspan="2">
                       <table>
                          <tr>
-                         
+                            <td class="title"><img  src=${profileImage}
                                style="width:100%; max-width:156px;"></td>
                          </tr>
                       </table>

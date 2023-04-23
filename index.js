@@ -9,9 +9,19 @@ const app = express()
 
 const port = process.env.PORT || 3001
 
+const puppeteer = require('puppeteer');
+
 app.use(cors())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
+
+(async () => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto('./documents', {waitUntil: 'networkidle0'});
+    await page.pdf({path: 'resume.pdf', format: 'A4'});
+    await browser.close();
+  })();
 
 app.post('/create-pdf', (req, res)=> {
     pdf.create(pdfTemplate(req.body), {}).toFile('resume.pdf', (err)=> {
